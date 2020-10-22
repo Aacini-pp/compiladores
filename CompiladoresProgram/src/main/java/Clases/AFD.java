@@ -12,4 +12,5 @@ package Clases;
 public class AFD {
     int número = 123;
     String Prueba = "Puto el que lo lea";
+    String Prueba2 = "Yamete Kudasaii";
 }
