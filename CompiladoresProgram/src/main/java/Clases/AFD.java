@@ -10,5 +10,6 @@ package Clases;
  * @author J.PEREZ
  */
 public class AFD {
-    
+    int número = 123;
+    String Prueba = "Puto el que lo lea";
 }
