@@ -5,10 +5,15 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author J.PEREZ
  */
 public class Transicion {
+    private char Simbolo;
+    private ArrayList<Estado> EdosDestino;
+    
     
 }
