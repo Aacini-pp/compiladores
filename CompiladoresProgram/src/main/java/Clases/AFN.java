@@ -5,6 +5,7 @@
  */
 package Clases;
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  *
@@ -19,6 +20,8 @@ public class AFN {
     private ArrayList<Estado> EstadosAFN;
     private int IdAFN;
     
+    //constantes'ϵ'ñ
+    static final char epsilon='ϵ';
     
     //METODOS
     public AFN crearBasico(char c){
@@ -52,8 +55,52 @@ public class AFN {
     }
     
     
+    ArrayList<Estado> cerraduraEpsilon(Estado e){
+        Estado p;
+        Stack<Estado> s = new Stack();
+        ArrayList<Estado>  R= new ArrayList<Estado>();
+        s.push(e);
+        while( !s.empty() ){
+            p= s.pop();
+            R.add(p);
+            for(Transicion trans: p.Transiciones){
+                if( trans.getSimbolo() == epsilon  ){
+                   if(! R.contains(p)  )
+                       s.push(p);
+                }
+            }
+        
+        }
+        
+        
+    
+    
+        return R;
+    }
+    
+    
+    ArrayList <Estado> cerraduraEpsilon(ArrayList<Estado> c){
+        ArrayList<Estado > R = new ArrayList<Estado>();
+        for(Estado e:c){
+            R.addAll( cerraduraEpsilon(e) );
+        }
+        return R;
+    }
     
     
     
+    ArrayList<Estado> mover( Estado e, char c){
+            ArrayList<Estado> R = new ArrayList<Estado>();
+            for(Transicion t: e.Transiciones){
+                if(t.getSimbolo()==c){
+                    R.addAll(   t.getEdosDestino()    );   //revisar esta parte
+                }
+            }
+    
+        return R;
+    }
+                
     
 }
+
+

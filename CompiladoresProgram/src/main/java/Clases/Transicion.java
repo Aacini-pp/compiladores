@@ -12,6 +12,22 @@ import java.util.ArrayList;
  * @author J.PEREZ
  */
 public class Transicion {
+
+    public char getSimbolo() {
+        return Simbolo;
+    }
+
+    public void setSimbolo(char Simbolo) {
+        this.Simbolo = Simbolo;
+    }
+
+    public ArrayList<Estado> getEdosDestino() {
+        return EdosDestino;
+    }
+
+    public void setEdosDestino(ArrayList<Estado> EdosDestino) {
+        this.EdosDestino = EdosDestino;
+    }
     private char Simbolo;
     private ArrayList<Estado> EdosDestino;
     
