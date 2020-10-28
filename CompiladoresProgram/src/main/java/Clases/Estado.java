@@ -35,7 +35,7 @@ public class Estado {
         this.Transiciones = Transiciones;
     }
 
-    public Boolean getEdoInicial() {
+    public Boolean isEdoInicial() {
         return EdoInicial;
     }
 
@@ -43,7 +43,7 @@ public class Estado {
         this.EdoInicial = EdoInicial;
     }
 
-    public Boolean getEdoFinal() {
+    public Boolean isEdoFinal() {
         return EdoFinal;
     }
 
@@ -60,7 +60,31 @@ public class Estado {
     }
     
     
+    public void setTransicion(Estado e, char c){
+        
+        for(Transicion t: Transiciones){
+            if(t.getSimbolo()==c){
+                t.setEdoDestino(e);
+                return;
+            }
+        }
+        
+        //Si no encontro una transicion con el simbolo c entonces,
+        Transicion t = new Transicion();
+        t.setSimbolo(c);
+        t.setEdoDestino(e);
+        this.Transiciones.add(t);
+    }
     
+    public void setTransiciones(ArrayList<Estado> e, char c){
+        //Verificar primero si ya existe una transicion con el simbolo c
+        Transicion t = new Transicion();
+        t.setSimbolo(c);
+        for(Estado E: e){
+             t.setEdoDestino(E);
+        }        
+        this.Transiciones.add(t);
+    }
     
     
 }

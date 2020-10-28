@@ -10,19 +10,24 @@ import java.util.ArrayList;
 /**
  *
  * @author J.PEREZ
+ * Sirve para agregar los nuevos conjusntos que se obtienen
+ * al aplicar IrA(S, c)
+ * La MARCA nos permitira saber si ya fue analizado para ver transiciones
+ * y el ID para enierar los subconjuntos que salen.
  */
 public class Subconjunto {
     
-    private ArrayList<Estado> Estados;
-    private int id;
-    private boolean marca;
+    private ArrayList<Estado> Estados;//Estado resultantes al aplicar IrA
+    private int id;//ID del subconjunto
+    private boolean marca;//True si ya fue utilizado para generar 
+                            //otros posibles subconjuntos.
 
     public ArrayList<Estado> getEstados() {
         return Estados;
     }
 
-    public void setEstados(ArrayList<Estado> Estados) {
-        this.Estados = Estados;
+    public void agregarEstados(ArrayList<Estado> Estados) {
+        this.Estados.addAll(Estados);
     }
 
     public int getId() {
