@@ -24,10 +24,14 @@ public class AFN {
     static final char epsilon='ϵ';
     
     //METODOS
-    public AFN crearBasico(char c){
-        
-        AFN afn = new AFN();
-        return afn;
+    public void crearBasico(char c){
+        this.Alfabeto[0] = c;
+        Estado estado_ini = new Estado();
+        Estado estado_fin = new Estado();
+        estado_ini.setTransicion(estado_fin, c);
+        this.EstadosAFN.add(estado_ini);
+        this.EstadosAFN.add(estado_fin);
+        this.EdosAceptacion.add(estado_fin);
     }
     
     public AFN unirAFN(AFN afn2){
@@ -153,14 +157,12 @@ public class AFN {
     
     AFD convertirAFN(){
         AFD afd = new AFD();
-        ArrayList<Subconjunto> R = construirSubconjuntos();//Obtener subconjuntos.     
-        
+        ArrayList<Subconjunto> R = construirSubconjuntos();//Obtener subconjuntos.             
         
         //Crear ESTADO INICIAL
         Estado E = new Estado();
         E.setEdoInicial(true);
-        E.setIdentificador(R.get(0).getId());//Establecer el estado inicial tomando el primer Subconjunto
-        
+        E.setIdentificador(R.get(0).getId()); //tomando el primer Subconjunto
         
         Subconjunto S = R.get(0);
         
@@ -194,13 +196,7 @@ public class AFN {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
+
         return afd;
     }
     

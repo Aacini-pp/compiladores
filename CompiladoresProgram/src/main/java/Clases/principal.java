@@ -1,14 +1,11 @@
 package Clases;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class principal {
     
     public static void main (String[] args){
-    
-        AFN miAFN = new AFN();
-        int opcionMenu;
-        Scanner leer = new Scanner(System.in);
         /* Se necesita
         Crear AFN por metodo de Thompson.
         Unir AFN's para crear un AFN y AFD para analizador léxico.
@@ -16,8 +13,15 @@ public class principal {
         Mostrar Resultado de las operaciones C_E, Mover, Ir_A
         /Requisitos:
         //Crear clase: Estado, Transición, AFN, AFD
-        
         */
+        
+        AFN miAFN;
+        ArrayList<AFN> listaAFN = new ArrayList();
+        ArrayList<AFD> listaAFD = new ArrayList();
+        
+        int opcionMenu;
+        Scanner leer = new Scanner(System.in);
+        
         System.out.println("-------MENU-------");
         System.out.println("1. Crear AFN básico."); //In: un caracter, y ponerle ID (para cerradura, etc)
         System.out.println("2. Unir 2 AFN."); //In: 2do AFN, ID para AFN unión, Out: AFN unión
@@ -36,6 +40,9 @@ public class principal {
                 System.out.print("Ingresa el caracter para la transición del AFN: ");
                 char c = leer.next().charAt(0);
                 System.out.println("C: "+c);
+                miAFN = new AFN();
+                miAFN.crearBasico(c);
+                listaAFN.add(miAFN);
                 break;
             case 2: //Unir AFN
                 break;
